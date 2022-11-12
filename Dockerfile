@@ -1,4 +1,4 @@
-FROM node:9-alpine
+FROM node:alpine
 
 ENV EXPRESS_PORT=3000
 EXPOSE ${EXPRESS_PORT}
@@ -6,8 +6,9 @@ EXPOSE ${EXPRESS_PORT}
 WORKDIR /app
 
 COPY index.js .
+COPY utils.js .
 COPY package.json .
 
 RUN npm install
 
-CMD ["node", "index.js"]
+ENTRYPOINT ["node", "index.js"]
